@@ -1,0 +1,217 @@
+#format = """
+#[╭─user───❯](bold blue) $username
+#[┣─system─❯](bold yellow) $hostname
+#[┣─project❯](bold red) $directory$rust$git_branch$git_state$git_status$package$golang$terraform$docker_context$python$docker_context$nodejs
+#[╰─cmd────❯](bold green)
+#"""
+
+
+format = """
+$container\
+$username\
+$hostname\
+$os\
+$sudo\
+$shell\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$package\
+$rust\
+$golang\
+$terraform\
+$python\
+$nodejs\
+$dotnet\
+$docker_context\
+$cmd_duration
+$character\
+"""
+# Inserts a blank line between shell prompts
+add_newline = false
+
+[username]
+style_user = "green bold"
+style_root = "red bold"
+format = "[$user]($style)"
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+format = '@[$hostname](bold purple) '
+trim_at = "."
+disabled = false
+
+[sudo]
+disabled = false
+symbol = "🧙"
+# format = '[$symbol ]($style)'
+format = '[$symbol]() '
+
+[shell]
+disabled = false
+zsh_indicator = ''
+powershell_indicator = ''
+bash_indicator = ' '
+# style = 'fg:#F2F2F2 bg:#659CD9'
+format = '[$indicator](bold white)'
+
+# Replace the "❯" symbol in the prompt with "➜"
+[character]                            # The name of the module we are configuring is "character"
+success_symbol = "[➜](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
+error_symbol = "[➜](bold red)"
+# error_symbol = "[✗](bold red)"
+
+# 󰀷 󰀵
+# configure directory
+[directory]
+read_only = "󰉐"
+truncation_length = 10
+truncate_to_repo = true # truncates directory to root folder if in github repo
+style = "bold italic blue"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[cmd_duration]
+# min_time = 4
+show_milliseconds = false
+disabled = false
+style = "bold italic red"
+
+[git_branch]
+symbol = " "
+format = "on $symbol$branch(:$remote_branch) "
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+stashed = "[${count}*](green)" 
+modified = "[${count}+](yellow)" 
+deleted =  "[${count}-](red)" 
+conflicted =  "[${count}~](red)" 
+ahead = "⇡${count}"
+behind = "⇣${count}"
+untracked = "[${count}?](blue)" 
+staged = "[${count}+](green)" 
+
+[git_state]
+style =	"bold red"
+format = "[$state( $progress_current/$progress_total) ]($style)"
+rebase = "rebase"
+merge = "merge"	
+revert = "revert"	
+cherry_pick = "cherry"
+bisect = "bisect"	
+am = "am"	
+am_or_rebase = "am/rebase"
+
+[c]
+format = 'via [$name $version]($style)'
+
+[dotnet]
+style = "fg:#D8A386" # bg:#86BBD8
+format = 'via [$symbol($version )(🎯 $tfm )]($style)'
+
+[elixir]
+symbol = " "
+style = "fg:#D8A386" # bg:#86BBD8
+format = '[ $symbol ($version) ]($style)'
+
+[elm]
+symbol = " "
+style = "fg:#D8A386" # bg:#86BBD8
+format = '[ $symbol ($version) ]($style)'
+
+[haskell]
+symbol = " "
+style = "fg:#D8A386" # bg:#86BBD8
+format = '[ $symbol ($version) ]($style)'
+
+[java]
+symbol = " "
+style = "fg:#D8A386" # bg:#86BBD8
+format = '[ $symbol ($version) ]($style)'
+
+[julia]
+symbol = " "
+style = "fg:#D8A386" # bg:#86BBD8
+format = '[ $symbol ($version) ]($style)'
+
+[nodejs]
+# symbol = ""
+symbol = "󰎙"
+style = "fg:#D8A386" # bg:#86BBD8
+format = '[ $symbol ($version) ]($style)'
+
+[nim]
+symbol = ""
+style = "fg:#D8A386" # bg:#86BBD8
+format = '[ $symbol ($version) ]($style)'
+
+[python]
+symbol = ""
+style = "fg:#D8A386" # bg:#3B4252
+format = '[$symbol ($version)(\($virtualenv\) )]($style)'
+
+[rust]
+symbol = ""
+style = "fg:#D8A386" # bg:#86BBD8
+format = '[ $symbol ($version) ]($style)'
+
+[os]
+format = '[$symbol](bold white)'
+disabled = false
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Windows = "󰍲 "
+
+[container]
+format = '[$symbol \[$name\]]($style) '
+
+
+# References
+# https://github.com/ChrisTitusTech/mybash/blob/main/starship.toml
+# https://gitlab.com/dwt1/dotfiles/-/blob/master/.config/starship.toml?ref_type=heads
