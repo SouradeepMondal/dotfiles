@@ -16,8 +16,8 @@ fi
 mkdir -p "$(dirname "$LINK_NAME")"
 
 # Remove any existing file or symlink at destination
-if [[ -L "$DEST" || -e "$DEST" ]]; then
-  rm -f "$DEST"
+if [[ -L "$LINK_NAME" || -e "$LINK_NAME" ]]; then
+  rm -f "$LINK_NAME"
 fi
 
 # Create the symbolic link
