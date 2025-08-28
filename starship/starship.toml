@@ -6,10 +6,34 @@
 #"""
 
 
+# format = """
+# $container\
+# $username\
+# $hostname\
+# $os\
+# $sudo\
+# $shell\
+# $directory\
+# $git_branch\
+# $git_state\
+# $git_status\
+# $package\
+# $rust\
+# $golang\
+# $terraform\
+# $python\
+# $nodejs\
+# $dotnet\
+# $docker_context\
+# $cmd_duration
+# $character\
+# """
+
 format = """
 $container\
 $username\
 $hostname\
+$battery\
 $os\
 $sudo\
 $shell\
@@ -17,17 +41,74 @@ $directory\
 $git_branch\
 $git_state\
 $git_status\
-$package\
-$rust\
-$golang\
-$terraform\
-$python\
-$nodejs\
-$dotnet\
 $docker_context\
+$package\
+$c\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$fennel\
+$gleam\
+$golang\
+$guix_shell\
+$haskell\
+$haxe\
+$helm\
+$java\
+$julia\
+$kotlin\
+$gradle\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$opa\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$quarto\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$solidity\
+$swift\
+$terraform\
+$typst\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$nix_shell\
+$conda\
+$meson\
+$spack\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$nats\
+$direnv\
+$env_var\
+$mise\
+$crystal\
+$custom\
 $cmd_duration
 $character\
 """
+
+
 # Inserts a blank line between shell prompts
 add_newline = false
 
@@ -210,6 +291,7 @@ Windows = "󰍲 "
 
 [container]
 format = '[$symbol \[$name\]]($style) '
+
 
 
 # References
